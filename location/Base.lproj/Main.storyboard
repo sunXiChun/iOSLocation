@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBU-G4-ZA5">
+                                <rect key="frame" x="50" y="104" width="121" height="30"/>
+                                <state key="normal" title="monitoringRegion"/>
+                                <connections>
+                                    <action selector="region:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k2r-tN-rV5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QjR-JO-8pl">
+                                <rect key="frame" x="50" y="144" width="84" height="30"/>
+                                <state key="normal" title="startBeacon"/>
+                                <connections>
+                                    <action selector="startBeacon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iyz-xq-epE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0an-YC-c4a">
+                                <rect key="frame" x="169" y="180" width="37.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="DxJ-Ef-3mf">
+                                <rect key="frame" x="284" y="66" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="4U1-OT-q9b"/>
+                                    <constraint firstAttribute="height" constant="40" id="SYK-rg-28v"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfO-Qe-jNV">
+                                <rect key="frame" x="50" y="66" width="61" height="30"/>
+                                <state key="normal" title="updating"/>
+                                <connections>
+                                    <action selector="updating:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d7w-CC-uss"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqo-H9-WHq">
+                                <rect key="frame" x="184" y="144" width="101" height="30"/>
+                                <state key="normal" title="recieveBeacon"/>
+                                <connections>
+                                    <action selector="recieveBeacon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kd6-Yx-qxX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XBU-G4-ZA5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="84" id="JfG-We-6U5"/>
+                            <constraint firstItem="QjR-JO-8pl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="124" id="Mzs-CD-1GD"/>
+                            <constraint firstItem="DxJ-Ef-3mf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="P2f-dl-rNh"/>
+                            <constraint firstItem="0an-YC-c4a" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QWt-hv-EFi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XBU-G4-ZA5" secondAttribute="trailing" symbolic="YES" id="SvM-d0-oyw"/>
+                            <constraint firstItem="0an-YC-c4a" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="160" id="XR5-iS-lnx"/>
+                            <constraint firstItem="rqo-H9-WHq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="124" id="Zkp-vR-tWr"/>
+                            <constraint firstItem="rqo-H9-WHq" firstAttribute="leading" secondItem="QjR-JO-8pl" secondAttribute="trailing" constant="50" id="e0s-Nr-QLB"/>
+                            <constraint firstItem="DxJ-Ef-3mf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-51" id="e7o-cA-Gb0"/>
+                            <constraint firstItem="QjR-JO-8pl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="fcS-Kv-Azd"/>
+                            <constraint firstItem="DxJ-Ef-3mf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BfO-Qe-jNV" secondAttribute="trailing" constant="8" symbolic="YES" id="jfv-QQ-QwI"/>
+                            <constraint firstItem="BfO-Qe-jNV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="lJt-vR-JpI"/>
+                            <constraint firstItem="BfO-Qe-jNV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="n8f-di-glt"/>
+                            <constraint firstItem="XBU-G4-ZA5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="qxL-5P-omA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="arrow" destination="DxJ-Ef-3mf" id="iUE-mp-YNa"/>
+                        <outlet property="showLabel" destination="0an-YC-c4a" id="SzV-Xz-agQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow" width="100" height="100"/>
+    </resources>
+</document>
