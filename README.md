@@ -1,4 +1,17 @@
-## iOS定位使用全解
+---
+title: "[iOS]定位使用全解"
+catalog: true
+toc_nav_num: true
+date: 2018-12-30 10:51:24
+subtitle: 
+header-img: "/img/location_head.png"
+tags:
+- iOS
+catagories:
+- iOS
+
+---
+
 
 因项目需要，最近对iOS定位api进行了一次彻底的学习。其中不乏基站定位、iBeacon等意料之外的用法。经过一番尝试之后，把各方资料整理一下分享给大家。
 
@@ -8,7 +21,6 @@
 
 #### 手机基站定位
 
-```
 手机基站定位服务又叫做移动位置服务（LBS——Location Based Service）
 通过电信移动运营商的网络（如GSM网）获取移动终端用户的位置信息（经纬度坐标）
 
@@ -20,13 +32,11 @@
 
 特点
 
-定位速度最快，耗电最少，误差几百上千米。
-```
+定位速度最快, 耗电最少，误差几百上千米.
 
 
 #### WIFI定位
 
-```
 通过无线网卡手机周围所有的WIFI热点（不需要连接上，只需要有信号就行），获得它们的MAC地址，
 然后到苹果云端服务器查询这个热点登记的位置,计算（多个热点折中）得到当前位置。
 
@@ -38,25 +48,21 @@ iOS设备在您有网络连接时，根据您的位置，自动下载您所在�
 
 WIFI定位速度、耗电和精度都介于基站和GPS之间，精度大概在几十米。
 WIFI定位的支持范围没有基站定位广，但是苹果的云端服务器一直在不断增加新的热点信息，使得热点定位支持的地区越来越多。
-```
 
 
 #### GPS定位
 
-```
 GPS（Global Positioning System）即全球定位系统，是由美国建立的一个卫星导航定位系统，利用该系统，
 用户可以在全球范围内实现全天候、连续、实时的三维导航定位和测速；
 
-GPS定位精度可达10米以内, 不过这是美国军方控制的, 战争时期可能变的不稳定或者误报。
+GPS定位精度可达10米以内, 不过这是美国军方控制的, 战争时期可能变的不稳定或者误报. 
 
 特点：
 与基站定位和WIFI定位相比，GPS耗电最大，速度最慢，但是精度最高。
 
-```
 
 #### IBeacon技术
 
-```
 iBeacon是苹果公司2013年9月发布的移动设备用OS(iOS7)上配备的新功能。
 它采用了基于蓝牙4.0的低功耗蓝牙技术(Bluetooth Low Energy, BLE),主要是用作辅助室内定位的功能。
 
@@ -68,12 +74,11 @@ iOS7对接收到的iBeacon信号进行解释后，向等待iBeacon资讯的所�
 特点：
 低功耗，距离范围小，定位精准度高。
 
-```
 
 ## 二、iOS定位api详细解读
 
 
-[工程Demo传送门](https://github.com/sunXiChun/iOSLocation)
+[工程Demo传送门](https://github.com/sunXiChun/fullLocation)
 
 **1、标准定位**
 
@@ -99,19 +104,21 @@ iPhone的GPS与纯粹的GPS定位不同, 称为A-GPS, 即辅助GPS.
 
 对于定位精度要求相对低的场景。可以使用基站定位告知重大位置变化，降低功耗。
 
+
 ```
 - (void)startMonitoringSignificantLocationChanges;
 - (void)stopMonitoringSignificantLocationChanges;
 
 //通过CLLocationManagerDelegate回调告知定位结果
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations;
-``` 
+```
+
 基站定位的使用需要基于AlwaysAuthorization权限。
 
 有意思的是基站定位不仅能在后台上报定位信息，在app被杀死的情况也能将app激活上报。
 根据这种特性，几乎可以把app做成杀不死的小强，不过苹果审核能不能过还是要看具体的应用场景。
 
-下面这段代码可以使app在杀死情况下被激活。
+一般情况下，app切后台（applicationDidEnterBackground）和被杀死（applicationWillTerminate）情况下调用startMonitoringSignificantLocationChanges即可激活基站定位启动调起app功能，并在下面这段代码中区分启动类型。
 
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -141,10 +148,10 @@ iPhone的GPS与纯粹的GPS定位不同, 称为A-GPS, 即辅助GPS.
 
 //停是否显示方向的校对,返回yes的时候,将会校对正确之后才会停止
 - (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager;
-``` 
+
+
 CLHeading 中封装了指南针方向的信息。通过一定计算可以将方向计算出来。如demo中：
 
-```
 CGFloat heading = -1.0f * M_PI * newHeading.magneticHeading / 180.0f;
 ```
 
@@ -162,6 +169,7 @@ CGFloat heading = -1.0f * M_PI * newHeading.magneticHeading / 180.0f;
 //通过CLLocationManagerDelegate回调告知定位结果
 - (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit;
 ```
+
 同2 也可以杀死情况被激活。
 
 **5、区域监听**
