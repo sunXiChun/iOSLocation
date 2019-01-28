@@ -1,18 +1,3 @@
----
-title: "[iOS]定位使用全解"
-catalog: true
-toc_nav_num: true
-date: 2018-12-30 10:51:24
-subtitle: 
-header-img: "/img/location_head.png"
-tags:
-- iOS
-catagories:
-- iOS
-
----
-
-
 因项目需要，最近对iOS定位api进行了一次彻底的学习。其中不乏基站定位、iBeacon等意料之外的用法。经过一番尝试之后，把各方资料整理一下分享给大家。
 
 ### 一、知识点普及
